@@ -8,4 +8,22 @@ ntp::servers:
     - 1.uk.pool.ntp.org
     - 2.uk.pool.ntp.org
 
-profile::zabbix::agent::server: "xabbix.hmrc.qa"
+profile::zabbix::agent::server: "zabbix.hmrc.qa"
+
+hosts::host_entries:
+    'zabbix.hmrc.qa':
+        ip: 192.168.100.10
+        host_aliases:
+            - 'zabbix'
+    'puppet.hmrc.qa':
+        ip: 192.168.100.11
+        host_aliases:
+            - 'puppet'
+    'elk.hmrc.qa':
+        ip: 192.168.100.12
+        host_aliases:
+            - 'elk'
+    'jenkins.hmrc.qa':
+        ip: 192.168.100.13
+        host_aliases:
+            - 'jenkins'
