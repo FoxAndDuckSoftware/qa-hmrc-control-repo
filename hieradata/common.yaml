@@ -1,11 +1,6 @@
 ---
 classes: 'profile::base'
 
-network::dynamic:
-    'eth0':
-        ensure: up
-        zone: public
-
 ntp::servers:
     - 0.uk.pool.ntp.org
     - 1.uk.pool.ntp.org
