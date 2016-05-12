@@ -1,3 +1,0 @@
-[submodule "hieradata/nodes"]
-	path = hieradata/nodes
-	url = git@github.com:FoxAndDuckSoftware/qa-hmrc-nodes.git
