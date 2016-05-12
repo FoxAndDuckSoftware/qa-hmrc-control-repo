@@ -1,6 +1,3 @@
 ---
 classes:
     - role::gitlab
-    - role::zabbix::agent
-
-profile::zabbix::agent::server: "xabbix.hmrc.qa"

@@ -1,7 +1,11 @@
 ---
-classes: 'profile::base'
+classes:
+    - 'profile::base'
+    -  role::zabbix::agent
 
 ntp::servers:
     - 0.uk.pool.ntp.org
     - 1.uk.pool.ntp.org
     - 2.uk.pool.ntp.org
+
+profile::zabbix::agent::server: "xabbix.hmrc.qa"

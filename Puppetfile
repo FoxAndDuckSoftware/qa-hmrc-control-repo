@@ -1,6 +1,8 @@
 forge 'forge.puppetlabs.com'
 
 # Forge Modules
+mod 'example42/yum'
+mod 'puppetlabs/java'
 mod 'puppetlabs/ntp'
 mod 'puppetlabs/stdlib'
 mod 'vshn/gitlab'
