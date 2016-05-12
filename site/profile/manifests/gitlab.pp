@@ -3,6 +3,6 @@
 # Defines what is required for the gitlab instance.
 class profile::gitlab( $externalurl = $::servername ) {
     class { '::gitlab':
-        external_url => $externalurl
+        external_url => join('http://', $externalurl)
     }
 }
