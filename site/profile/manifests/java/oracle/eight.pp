@@ -1,7 +1,7 @@
 # == Class: profile::java
 #
 class profile::java::oracle::eight {
-    class { '::java::oracle':
+    ::java::oracle { 'jdk8' :
         ensure  => 'present',
         version => '8',
         java_se => 'jdk'
