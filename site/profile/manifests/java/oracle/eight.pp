@@ -1,6 +1,6 @@
 # == Class: profile::java
 #
-class profile::java::oracle::8 {
+class profile::java::oracle::eight {
     class { '::java::oracle':
         ensure  => 'present',
         version => '8',
