@@ -1,9 +1,7 @@
 # == Class: profile::jenkins::master
 #
 class profile::jenkins::master {
-    class { '::yum':
-        extrarepo => ['jenkins'],
-    } ->
+    include ::yum::repo::jenkins
     package { 'jenkins':
         ensure => 'latest',
     } ~>
