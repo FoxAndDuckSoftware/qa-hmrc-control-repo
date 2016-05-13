@@ -7,4 +7,12 @@ class profile::base {
     class { '::yum':
         extrarepo => [ 'epel' , 'puppetlabs' ],
     }
+
+    package { 'puppet':
+        ensure => latest,
+    } ~>
+    service { 'puppet':
+        ensure => running,
+        enable => true,
+    }
 }
