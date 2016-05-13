@@ -11,4 +11,6 @@ class profile::jenkins::master {
         hasrestart => true,
         hasstatus  => true,
     }
+
+    class { 'nginx': }
 }

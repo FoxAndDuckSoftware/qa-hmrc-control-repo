@@ -1,3 +1,12 @@
 ---
 classes:
     - role::jenkins::master
+
+nginx::nginx_vhosts:
+    'envinfjen01.hmrc.qa':
+        listen_port: 80
+        proxy: "http://localhost:8080"
+
+    'jenkins.qa.singularity.uk':
+        listen_port: 80
+        proxy: "http://localhost:8080"
