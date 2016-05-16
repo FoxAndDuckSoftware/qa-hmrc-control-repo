@@ -5,12 +5,12 @@ class profile::aws {
         ensure => present,
         path   => '/etc/cloud/cloud.cfg',
         line   => '# - set_hostname',
-        match  => ' - set_hostname'
+        match  => '^ - set_hostname'
     }
     file_line { 'disable update_hostname':
         ensure => present,
         path   => '/etc/cloud/cloud.cfg',
         line   => '# - update_hostname',
-        match  => ' - update_hostname'
+        match  => '^ - update_hostname'
     }
 }
