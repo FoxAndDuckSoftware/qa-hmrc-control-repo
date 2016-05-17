@@ -1,0 +1,26 @@
+<%# Parameters -%>
+<%- | Numeric $filebeat_port,
+	  Boolean $ssl_enabled,
+	  Array $ssl_certificate_authorities,
+	  String $ssl_certificate,
+	  String $ssl_key,
+	  String $ssl_verify_mode
+| -%>
+
+# Input for logstash we are using filebeat to forward logs from remote hosts below is the configuration required to accept the input. 
+input {
+	beats{
+		# The port to listen to for file beat forwarding
+		port => <%= $filebeat_port -%>
+		# The document type of the incoming log file.  This is used to determine which logstash filter is used to process the message
+		#  It takes this from the file beat metadata
+		type => "%{[@metadata][type]}"
+		ssl => <%= $ssl_enabled -%>
+		<% if $ssl_enabled { -%> 
+		ssl_certificate_authorities => <%= $ssl_certificate_authorities -%>
+		ssl_certificate => <%= $ssl_certificate -%>
+		ssl_key => <%= $ssl_key -%>
+		ssl_verify_mode => <%= $ssl_verify_mode -%>
+		<% } -%>
+	}
+}
