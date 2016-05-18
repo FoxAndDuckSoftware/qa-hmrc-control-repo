@@ -9,6 +9,6 @@ class profile::nexus {
     class { '::nginx': }
     nginx::resource::vhost { '_':
         ensure => present,
-        proxy  => "http://${::nexus::nexus_host}:${::nexus::nexus_port}"
+        proxy  => "http://${::nexus::nexus_host}:${::nexus::nexus_port}/nexus"
     }
 }
