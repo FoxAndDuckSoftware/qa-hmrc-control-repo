@@ -7,14 +7,8 @@ class profile::nexus {
         nexus_root => '/opt'
     }
     class { '::nginx': }
-    nginx::resource::vhost { 'nexus':
-        ensure         => present
-    }
-    nginx::resource::location { 'nexus':
-        ensure         => present,
-        location       => '/',
-        location_alias => 'nexus',
-        vhost          => 'nexus',
-        proxy          => "http://${::nexus::nexus_host}:${::nexus::nexus_port}"
+    nginx::resource::vhost { '/':
+        ensure => present,
+        proxy  => "http://${::nexus::nexus_host}:${::nexus::nexus_port}"
     }
 }
