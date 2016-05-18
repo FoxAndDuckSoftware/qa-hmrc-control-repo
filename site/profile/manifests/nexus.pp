@@ -8,13 +8,13 @@ class profile::nexus {
     }
     class { '::nginx': }
     nginx::resource::vhost { 'nexus':
-        ensure         => present,
-        location_alias => 'nexus'
+        ensure         => present
     }
     nginx::resource::location { 'nexus':
-        ensure   => present,
-        location => '/',
-        vhost    => 'nexus',
-        proxy    => "http://${::nexus::nexus_host}:${::nexus::nexus_port}"
+        ensure         => present,
+        location       => '/',
+        location_alias => 'nexus',
+        vhost          => 'nexus',
+        proxy          => "http://${::nexus::nexus_host}:${::nexus::nexus_port}"
     }
 }
