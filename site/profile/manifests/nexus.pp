@@ -8,7 +8,8 @@ class profile::nexus {
     }
     class { '::nginx': }
     nginx::resource::vhost { 'nexus':
-        ensure => present
+        ensure         => present,
+        location_alias => 'nexus'
     }
     nginx::resource::location { 'nexus':
         ensure   => present,
