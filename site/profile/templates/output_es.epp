@@ -1,13 +1,11 @@
 <%# Paramters -%> 
-<% | String $elasticsearch_protocol,
-	 Array $elasticsearch_hosts,
+<% | Array $elasticsearch_hosts,
 	 Boolean $ssl_enabled,
 	 Array $elasticsearch_cacert
 | -%>
 
 output {
 	elasticsearch {
-		protocol => <%= $elasticsearch_protocol -%>
 		hosts => <%= $elasticsearch_hosts -%>
 		ssl => <%= $ssl_enabled -%>
 		<% if $ssl_enabled { -%>

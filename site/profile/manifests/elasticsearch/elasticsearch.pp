@@ -7,7 +7,6 @@ class profile::elasticsearch::elasticsearch ( Boolean $node_master = true,
 											  Numeric $minimum_masterNodes = 3
 											  Numeric $http_port = 9200,
 											) { 
-
 	class { 'elasticsearch' : 
 		config           => {
 			'node'       => {
