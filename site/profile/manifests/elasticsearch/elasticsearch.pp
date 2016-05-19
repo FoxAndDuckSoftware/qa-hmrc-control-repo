@@ -13,19 +13,14 @@ class profile::elasticsearch::elasticsearch ( Boolean $node_master = true,
 			'node'       => {
 				'master' => $node_master,
 				'data'   => $node_data,
-				}
+			}
 			'discovery'  => {
 				'zen.minimum_master_nodes' => $minimum_masterNodes,
-				}
+			}
 			'http'       => {
 				'port'   => $http_port,
-				}
 			}
 		}
-
-# Customisation of the instance is done in the below section
-	elasticsearch::instance { 'instancename' :
-		
 	}
 }
 
