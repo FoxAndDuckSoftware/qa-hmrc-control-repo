@@ -1,67 +1,67 @@
 # ============================================================================ #
 # Filter Section
 filter {
-if [type] == "pega_cfs_bix_log" {
+	if [type] == "pega_cfs_bix_log" {
 
-grok {
-        match => ["message", "%{IPV4:IPaddress} - - \[%{GREEDYDATA:datestamp}\]\"%{WORD} %{PATH} %{GREEDYDATA:HTTPVersion}\" %{NUMBER:responsecode} %{NUMBER:size?}"]
-}
-date {
-        locale => "en"
-        timezone => "Europe/London"
-        match => ["datestamp", "dd/MMM/YYYY:HH:mm:ss Z"]
-        target => "@timestamp"
-        }
-    ruby {
-        code => "event['@timestamp'] = event['@timestamp'].localtime('+01:00')"
-   }
-}
-if [type] == "cfs_localhost_access" {
-        grok {
-        #match => ["message", "%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{TIME} %{WORD:method} (?:%{IPV6}|%{IPV4}) - %{URIPATH} %{GREEDYDATA} %{NUMBER:response_code} %{NUMBER} %{NUMBER:response_time}"]
-        match => ["message", "%{TIMESTAMP_ISO8601:timestamp} %{WORD:method} %{IPV4:ip} %{DATA} %{URIPATH:uri} %{DATA} %{INT:response_code} %{DATA:ignore} %{BASE16FLOAT:response_time}"]
-        }
-        mutate {convert => ["response_code", "integer"]}
-        mutate {convert => ["response_time", "float"]}
-        }
-if [type] == "pega_cfs_rules" {
-        grok {
-        match => [ "message", "Requestor Count: %{INT:req (?:[+-]?(?:[0-9]+))}" ]
-        match => [ "message", "Error Message: %{INT:inc_type (?:[+-]?(?:[0-9]+))}" ]
-        }
-        mutate {convert => ["inc_type", "integer"]}
-        mutate {convert => ["req", "integer"]}
-        }
+	grok {
+			match => ["message", "%{IPV4:IPaddress} - - \[%{GREEDYDATA:datestamp}\]\"%{WORD} %{PATH} %{GREEDYDATA:HTTPVersion}\" %{NUMBER:responsecode} %{NUMBER:size?}"]
+	}
+	date {
+			locale => "en"
+			timezone => "Europe/London"
+			match => ["datestamp", "dd/MMM/YYYY:HH:mm:ss Z"]
+			target => "@timestamp"
+			}
+		ruby {
+			code => "event['@timestamp'] = event['@timestamp'].localtime('+01:00')"
+	   }
+	}
+	if [type] == "cfs_localhost_access" {
+			grok {
+			#match => ["message", "%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{TIME} %{WORD:method} (?:%{IPV6}|%{IPV4}) - %{URIPATH} %{GREEDYDATA} %{NUMBER:response_code} %{NUMBER} %{NUMBER:response_time}"]
+			match => ["message", "%{TIMESTAMP_ISO8601:timestamp} %{WORD:method} %{IPV4:ip} %{DATA} %{URIPATH:uri} %{DATA} %{INT:response_code} %{DATA:ignore} %{BASE16FLOAT:response_time}"]
+			}
+			mutate {convert => ["response_code", "integer"]}
+			mutate {convert => ["response_time", "float"]}
+			}
+	if [type] == "pega_cfs_rules" {
+			grok {
+			match => [ "message", "Requestor Count: %{INT:req (?:[+-]?(?:[0-9]+))}" ]
+			match => [ "message", "Error Message: %{INT:inc_type (?:[+-]?(?:[0-9]+))}" ]
+			}
+			mutate {convert => ["inc_type", "integer"]}
+			mutate {convert => ["req", "integer"]}
+			}
 
-if [type] == "pega_mdm_bix_log" {
+	if [type] == "pega_mdm_bix_log" {
 
-grok {
-        match => ["message", "%{IPV4:IPaddress} - - \[%{GREEDYDATA:datestamp}\]\"%{WORD} %{PATH} %{GREEDYDATA:HTTPVersion}\" %{NUMBER:responsecode} %{NUMBER:size?}"]
-}
-date {
-        locale => "en"
-        timezone => "Europe/London"
-        match => ["datestamp", "dd/MMM/YYYY:HH:mm:ss Z"]
-        target => "@timestamp"
-        }
-    ruby {
-        code => "event['@timestamp'] = event['@timestamp'].localtime('+01:00')"
-   }
-}
-if [type] == "mdm_localhost_access" {
-        grok {
-       # match => ["message", "%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{TIME} %{WORD:method} (?:%{IPV6}|%{IPV4}) - %{URIPATH} %{GREEDYDATA} %{NUMBER:response_code} %{NUMBER} %{NUMBER:response_time}"]
-        match => ["message", "%{TIMESTAMP_ISO8601:timestamp} %{WORD:method} %{IPV4:ip} %{DATA} %{URIPATH:uri} %{DATA} %{INT:response_code} %{DATA:ignore} %{BASE16FLOAT:response_time}"]
-        }
-        mutate {convert => ["response_code", "integer"]}
-        mutate {convert => ["response_time", "float"]}
-        }
-if [type] == "pega_mdm_rules" {
-        grok {
-        match => [ "message", "Requestor Count: %{INT:req (?:[+-]?(?:[0-9]+))}" ]
-        match => [ "message", "Error Message: %{INT:inc_type (?:[+-]?(?:[0-9]+))}" ]
-        }
-        mutate {convert => ["inc_type", "integer"]}
-        mutate {convert => ["req", "integer"]}
-        }
+	grok {
+			match => ["message", "%{IPV4:IPaddress} - - \[%{GREEDYDATA:datestamp}\]\"%{WORD} %{PATH} %{GREEDYDATA:HTTPVersion}\" %{NUMBER:responsecode} %{NUMBER:size?}"]
+	}
+	date {
+			locale => "en"
+			timezone => "Europe/London"
+			match => ["datestamp", "dd/MMM/YYYY:HH:mm:ss Z"]
+			target => "@timestamp"
+			}
+		ruby {
+			code => "event['@timestamp'] = event['@timestamp'].localtime('+01:00')"
+	   }
+	}
+	if [type] == "mdm_localhost_access" {
+			grok {
+		   # match => ["message", "%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{TIME} %{WORD:method} (?:%{IPV6}|%{IPV4}) - %{URIPATH} %{GREEDYDATA} %{NUMBER:response_code} %{NUMBER} %{NUMBER:response_time}"]
+			match => ["message", "%{TIMESTAMP_ISO8601:timestamp} %{WORD:method} %{IPV4:ip} %{DATA} %{URIPATH:uri} %{DATA} %{INT:response_code} %{DATA:ignore} %{BASE16FLOAT:response_time}"]
+			}
+			mutate {convert => ["response_code", "integer"]}
+			mutate {convert => ["response_time", "float"]}
+			}
+	if [type] == "pega_mdm_rules" {
+			grok {
+			match => [ "message", "Requestor Count: %{INT:req (?:[+-]?(?:[0-9]+))}" ]
+			match => [ "message", "Error Message: %{INT:inc_type (?:[+-]?(?:[0-9]+))}" ]
+			}
+			mutate {convert => ["inc_type", "integer"]}
+			mutate {convert => ["req", "integer"]}
+			}
 }
