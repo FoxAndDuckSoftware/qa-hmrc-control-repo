@@ -1,12 +1,16 @@
 forge 'forge.puppetlabs.com'
 
 # Forge Modules
+mod 'elasticsearch/elasticsearch'
+mod 'elasticsearch/logstash'
 mod 'example42/yum'
 mod 'example42/puppi'
 mod 'ghoneycutt/hosts'
 mod 'hubspot/nexus'
 mod 'jfryman/nginx'
+mod 'jlambert121/kibana'
 mod 'maestrodev/wget'
+mod 'pcfens/filebeat'
 mod 'puppet/archive'
 mod 'puppetlabs/concat'
 mod 'puppetlabs/java'
