@@ -58,5 +58,4 @@ class profile::elasticsearch::logstash (Numeric $filebeat_port = 5044,
 	logstash::patternfile { 'extra_patterns' :
 		source => 'puppet:///site/profile/manifests/files/extra_patterns',
 	}
-
 }
