@@ -1,6 +1,7 @@
 forge 'forge.puppetlabs.com'
 
 # Forge Modules
+mod 'biemond/oradb'
 mod 'elasticsearch/elasticsearch'
 mod 'elasticsearch/logstash'
 mod 'example42/yum'
