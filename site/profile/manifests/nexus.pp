@@ -6,7 +6,8 @@ class profile::nexus {
     ensure => directory,
     owner  => 'nexus',
     group  => 'nexus'
-  } ->
+  }
+  
   class { '::nexus':
       version    => '2.13.0',
       revision   => '01',
