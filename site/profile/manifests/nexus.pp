@@ -12,6 +12,11 @@ class profile::nexus {
       revision   => '01',
       nexus_root => '/opt/nexus'
   }
+
+  package { [ 'createrepo', 'mergerepo' ]:
+    ensure => latest,
+  }
+
   class { '::nginx': }
   nginx::resource::vhost { '_':
       ensure => present,
