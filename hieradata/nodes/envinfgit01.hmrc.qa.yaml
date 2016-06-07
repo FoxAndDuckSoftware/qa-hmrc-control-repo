@@ -1,3 +1,10 @@
 ---
 classes:
     - role::gitlab
+
+::gitlab::gitlab_rails:
+  smtp_enable: true
+  smtp_address: '192.168.100.100' #
+  smtp_port: 25
+  smtp_domain: 'git.envinfgit01.hmrc.qa'
+  smtp_authentication: false
