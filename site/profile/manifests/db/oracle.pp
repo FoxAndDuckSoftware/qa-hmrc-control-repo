@@ -5,7 +5,7 @@ class profile::db::oracle {
   group { 'oinstall': gid => 1050 }
   group { 'dba': gid => 1051 }
 
-  class { '::accounts': }
+  class { '::accounts::user': }
   ::accounts::user { 'oracle':
     comment              => 'This user has been created with Puppet',
     home                 => '/home/oracle',
